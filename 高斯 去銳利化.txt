@@ -1,0 +1,12 @@
+a=imread('girl256.bmp');
+figure,imshow(a);
+
+a1=fspecial('gaussian',[3 3]);
+figure,imshow(filter2(a1,a)/256);
+
+u=fspecial('unsharp',0.6);
+au=filter2(u,a);
+figure,imshow(au/256);
+
+a2=fspecial('gaussian',[5 5],1);
+figure,imshow(filter2(a2,a)/256);
