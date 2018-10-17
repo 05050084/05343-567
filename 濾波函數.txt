@@ -1,0 +1,8 @@
+clear all;
+close all;
+c=imread('cameraman.tif');
+f1=fspecial('average',[25 25]);
+cf1=filter2(f1,c);
+imshow(uint8(cf1));
+figure;
+imshow(cf1/255);
