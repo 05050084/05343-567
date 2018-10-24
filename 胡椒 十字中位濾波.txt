@@ -1,0 +1,22 @@
+clear all;
+close all;
+a=imread('LENNA.bmp');
+a_sp=imnoise(a,'salt & pepper',0.05);% 5%的胡椒化
+imshow(a_sp);
+
+%5*5中位數濾波
+a_sp2=medfilt2(a_sp,[5 5]);
+figure,imshow(a_sp2);
+
+%5*5十字
+a_sp3=ordfilt2(a_sp,5,[0 0 1 0 0;0 0 1 0 0;1 1 1 1 1;0 0 1 0 0;0 0 1 0 0]);
+figure,imshow(a_sp3);
+
+%歧異點 D=0.4
+a_sp4=outlier(a_sp,0.4);
+figure,imshow(a_sp4);
+
+%3*3平均濾波
+a3=fspecial('average'); %7*7=('average',[7 7]);
+a_sp5=filter2(a3,a_sp);
+figure,imshow(uint8(a_sp5));
