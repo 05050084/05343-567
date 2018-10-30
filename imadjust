@@ -1,0 +1,10 @@
+clear all;close all;
+t=imread('blocks.tif');
+a=100/255;
+b=200/255;
+c=100/255;
+d=200/255;
+th=imadjust(t,[a,b],[c,d],1.8);
+figure,imshow(t);
+figure,imshow(th);
+plot(t,th,'.'),axis tight;
