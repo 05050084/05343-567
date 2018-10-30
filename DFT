@@ -1,0 +1,19 @@
+clear all;
+close all;
+cm=imread('cameraman.tif');
+dcm=fftshift(fft2(cm));
+figure,fftshow(dcm,'log');
+ 
+[x,y]=meshgrid(-128:127,-128:127);
+z=sqrt(x.^2+y.^2);
+c=(z<15);%低通
+cfl=dcm.*c;
+figure,fftshow(cfl,'log');
+cfli=ifft2(cfl);
+figure,fftshow(cfli,'abs');
+ 
+b=(z>30);%高通
+bfl=dcm.*b;
+figure,fftshow(bfl,'log');
+bfli=ifft2(bfl);
+figure,fftshow(bfli,'abs');
