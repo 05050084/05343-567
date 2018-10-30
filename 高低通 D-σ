@@ -1,0 +1,16 @@
+clear all;
+close all;
+cm=imread('LENNA.bmp');
+dcm=fftshift(fft2(cm));
+figure,fftshow(dcm,'log');
+f=lbutter(cm,20,2);%低通
+figure,fftshow(f,'log');
+c=f.*dcm;
+figure,fftshow(c,'log');
+e=ifft2(c);
+figure,fftshow(e,'abs');
+f2=hbutter(cm,20,2);%高通
+figure,fftshow(f2,'log');
+c=f2.*dcm;
+figure,fftshow(c,'log');
+e=ifft2(c); figure,fftshow(e,'abs');
