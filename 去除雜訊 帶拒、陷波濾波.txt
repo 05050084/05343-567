@@ -18,7 +18,7 @@ figure,fftshow(cfli,'abs');
 cf(119:121,:)=0;
 cf(135:137,:)=0;
 cf(:,113:115)=0;
-cf(:,141,143)=0;
+cf(:,141:143)=0;
 figure,fftshow(cf,'log');
 cfli=ifft2(cf);
 figure,fftshow(cfli,'abs');
