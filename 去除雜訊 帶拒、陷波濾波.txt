@@ -2,12 +2,12 @@ en=imread('cameraman.tif');
 [x,y]=meshgrid(1:256,1:256);
 s=1+sin(x/3+y/5);
 ep=(double(en)/128+s)/4;
-
+%去除雜訊
 figure,imshow(ep);
 cf=fftshift(fft2(ep));
 figure,fftshow(cf);
 
-
+%(帶拒濾波
 z=sqrt((x-129).^2+(y-129).^2);
 br=(z<15|z>20);
 tbr=cf.*br;
@@ -15,6 +15,7 @@ figure,fftshow(tbr,'log');
 cfli=ifft2(cf);
 figure,fftshow(cfli,'abs');
 
+%陷波濾波
 cf(119:121,:)=0;
 cf(135:137,:)=0;
 cf(:,113:115)=0;
